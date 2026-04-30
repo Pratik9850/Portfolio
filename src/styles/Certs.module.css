@@ -1,0 +1,81 @@
+/* Certs.module.css */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.card {
+  position: relative;
+  display: block;
+  padding: 1.5rem;
+  border-radius: var(--r-lg);
+  background: var(--c-bg2);
+  border: 1px solid var(--c-border);
+  text-decoration: none;
+  overflow: hidden;
+  transition: border-color var(--t-base), transform var(--t-slow), box-shadow var(--t-slow);
+}
+
+.card:hover {
+  border-color: var(--c-border2);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Glow orb top-right */
+.glow {
+  position: absolute;
+  top: -24px; right: -24px;
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(99,102,241,0.22) 0%, transparent 70%);
+  pointer-events: none;
+  transition: opacity var(--t-base);
+  opacity: 0.6;
+}
+
+.card:hover .glow { opacity: 1; }
+
+.icon {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.title {
+  font-family: var(--f-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--c-text);
+  line-height: 1.35;
+  margin-bottom: 0.4rem;
+}
+
+.issuer {
+  font-size: 0.75rem;
+  font-family: var(--f-mono);
+  color: var(--c-text3);
+  margin-bottom: 1rem;
+  letter-spacing: 0.04em;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--c-indigo);
+  font-family: var(--f-mono);
+  transition: gap var(--t-fast);
+}
+
+.card:hover .link {
+  gap: 0.55rem;
+}
+
+@media (max-width: 1000px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 700px)  { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px)  { .grid { grid-template-columns: 1fr; } }

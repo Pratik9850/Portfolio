@@ -1,0 +1,316 @@
+/* ============================================================
+   GLOBAL CSS — Pratik Sarode Portfolio
+   ============================================================ */
+
+/* ── CSS Custom Properties ─────────────────────────────────── */
+:root {
+  /* Colours */
+  --c-bg:        #020917;
+  --c-bg1:       #07101f;
+  --c-bg2:       #0c1830;
+  --c-bg3:       #111f3c;
+  --c-bg4:       #162347;
+
+  --c-indigo:    #6366f1;
+  --c-violet:    #8b5cf6;
+  --c-cyan:      #06b6d4;
+  --c-emerald:   #10b981;
+  --c-amber:     #f59e0b;
+  --c-rose:      #f43f5e;
+  --c-pink:      #ec4899;
+
+  --c-text:      #f0f4ff;
+  --c-text2:     #94a3b8;
+  --c-text3:     #4e637a;
+  --c-muted:     #334155;
+
+  --c-border:    rgba(99, 102, 241, 0.13);
+  --c-border2:   rgba(99, 102, 241, 0.28);
+  --c-glow:      rgba(99, 102, 241, 0.22);
+
+  /* Typography */
+  --f-display: 'Syne', system-ui, sans-serif;
+  --f-body:    'DM Sans', system-ui, sans-serif;
+  --f-mono:    'JetBrains Mono', 'Fira Mono', monospace;
+
+  /* Spacing scale */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.25rem;
+  --sp-6: 1.5rem;
+  --sp-8: 2rem;
+  --sp-10: 2.5rem;
+  --sp-12: 3rem;
+  --sp-16: 4rem;
+  --sp-20: 5rem;
+  --sp-24: 6rem;
+
+  /* Radius */
+  --r-sm:  6px;
+  --r-md:  12px;
+  --r-lg:  18px;
+  --r-xl:  24px;
+  --r-2xl: 32px;
+
+  /* Shadows */
+  --shadow-glow:    0 0 32px rgba(99, 102, 241, 0.18);
+  --shadow-card:    0 4px 24px rgba(0, 0, 0, 0.35);
+  --shadow-hover:   0 12px 40px rgba(99, 102, 241, 0.2);
+
+  /* Transitions */
+  --t-fast:   0.15s ease;
+  --t-base:   0.25s ease;
+  --t-slow:   0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  --t-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--c-bg);
+  color: var(--c-text);
+  font-family: var(--f-body);
+  font-weight: 400;
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, video, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font-family: var(--f-body); cursor: pointer; border: none; background: none; }
+ul, ol { list-style: none; }
+
+/* ── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--c-bg); }
+::-webkit-scrollbar-thumb { background: var(--c-indigo); border-radius: 2px; }
+::selection { background: rgba(99, 102, 241, 0.32); color: var(--c-text); }
+
+/* ── Typography helpers ─────────────────────────────────────── */
+.display-xl {
+  font-family: var(--f-display);
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+
+.display-lg {
+  font-family: var(--f-display);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+.display-md {
+  font-family: var(--f-display);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.eyebrow {
+  font-family: var(--f-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--c-cyan);
+}
+
+.body-lg  { font-size: 1.1rem; line-height: 1.75; }
+.body-md  { font-size: 0.95rem; line-height: 1.7; }
+.body-sm  { font-size: 0.85rem; line-height: 1.65; }
+.body-xs  { font-size: 0.75rem; }
+.mono     { font-family: var(--f-mono); }
+
+/* ── Gradient text ──────────────────────────────────────────── */
+.grad-text {
+  background: linear-gradient(135deg, var(--c-indigo) 0%, var(--c-violet) 45%, var(--c-cyan) 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradShift 5s ease infinite;
+}
+
+@keyframes gradShift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+/* ── Section divider ────────────────────────────────────────── */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--c-border2) 30%, var(--c-border2) 70%, transparent 100%);
+  margin: 0 var(--sp-8);
+}
+
+/* ── Section layout ─────────────────────────────────────────── */
+.section {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--sp-24) var(--sp-8);
+}
+
+.section-header {
+  margin-bottom: var(--sp-12);
+}
+
+.section-rule {
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--c-indigo), var(--c-cyan));
+  border-radius: 2px;
+  margin-top: var(--sp-3);
+}
+
+/* ── Cards ──────────────────────────────────────────────────── */
+.card {
+  background: var(--c-bg2);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-xl);
+  transition: border-color var(--t-base), transform var(--t-base), box-shadow var(--t-base);
+}
+
+.card:hover {
+  border-color: var(--c-border2);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* ── Buttons ────────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 0.8rem 1.75rem;
+  border-radius: var(--r-md);
+  background: linear-gradient(135deg, var(--c-indigo), var(--c-violet));
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.35);
+  transition: transform var(--t-fast), box-shadow var(--t-fast);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(99, 102, 241, 0.5);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 0.8rem 1.75rem;
+  border-radius: var(--r-md);
+  border: 1px solid var(--c-border2);
+  color: var(--c-text);
+  font-weight: 500;
+  font-size: 0.9rem;
+  background: rgba(255,255,255,0.02);
+  transition: border-color var(--t-base), background var(--t-base), transform var(--t-fast);
+}
+
+.btn-ghost:hover {
+  border-color: var(--c-indigo);
+  background: rgba(99,102,241,0.08);
+  transform: translateY(-2px);
+}
+
+/* ── Pill / tag ─────────────────────────────────────────────── */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.85rem;
+  border-radius: 100px;
+  font-size: 0.76rem;
+  font-weight: 500;
+  border: 1px solid var(--c-border);
+  background: rgba(99,102,241,0.05);
+  color: var(--c-text2);
+  font-family: var(--f-mono);
+  transition: border-color var(--t-fast), color var(--t-fast), background var(--t-fast);
+}
+
+.pill:hover {
+  border-color: var(--c-indigo);
+  color: var(--c-indigo);
+  background: rgba(99,102,241,0.1);
+}
+
+/* ── Animations ─────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes spinSlow {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spinReverse {
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50%       { transform: scale(1.5); opacity: 1; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+@keyframes drawIn {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.92); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+/* ── Utility ────────────────────────────────────────────────── */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}

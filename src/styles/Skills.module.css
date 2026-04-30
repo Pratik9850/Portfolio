@@ -1,0 +1,126 @@
+/* Skills.module.css */
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem 6rem;
+  margin-bottom: 3rem;
+}
+
+.barGroup { display: flex; flex-direction: column; gap: 1.25rem; }
+
+/* Individual bar */
+.bar { position: relative; }
+
+.barHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+}
+
+.barLabel {
+  font-family: var(--f-mono);
+  font-size: 0.78rem;
+  color: var(--c-text2);
+  letter-spacing: 0.04em;
+}
+
+.barPct {
+  font-family: var(--f-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.barTrack {
+  height: 4px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  width: 0%;
+  border-radius: 4px;
+  transition: width 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.barFill::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 12px; height: 100%;
+  background: rgba(255,255,255,0.35);
+  border-radius: 4px;
+  filter: blur(2px);
+}
+
+/* Tech pill cloud */
+.pillCloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+/* Category cards */
+.catGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 3rem;
+}
+
+.catCard {
+  padding: 1.5rem;
+  border-radius: var(--r-lg);
+  background: var(--c-bg2);
+  border: 1px solid var(--c-border);
+  transition: border-color var(--t-base), transform var(--t-base), box-shadow var(--t-base);
+}
+
+.catCard:hover {
+  border-color: var(--c-border2);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.catIcon {
+  font-size: 1.6rem;
+  margin-bottom: 0.85rem;
+  display: block;
+}
+
+.catTitle {
+  font-family: var(--f-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--c-text);
+  margin-bottom: 0.85rem;
+}
+
+.catPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.catPill {
+  font-family: var(--f-mono);
+  font-size: 0.7rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 100px;
+  background: rgba(99,102,241,0.07);
+  border: 1px solid rgba(99,102,241,0.15);
+  color: var(--c-indigo);
+}
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; gap: 2rem; }
+  .catGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .catGrid { grid-template-columns: 1fr; }
+}

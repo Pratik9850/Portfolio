@@ -1,0 +1,116 @@
+/* Navbar.module.css */
+
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 5vw;
+  background: rgba(2, 9, 23, 0.75);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border-bottom: 1px solid var(--c-border);
+  transition: background var(--t-base), border-color var(--t-base);
+}
+
+.nav.scrolled {
+  background: rgba(2, 9, 23, 0.93);
+  border-color: var(--c-border2);
+}
+
+/* Logo */
+.logo {
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: 1.4rem;
+  letter-spacing: -0.04em;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--c-indigo), var(--c-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Links */
+.links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.link {
+  font-family: var(--f-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-text2);
+  cursor: pointer;
+  position: relative;
+  padding-bottom: 2px;
+  transition: color var(--t-fast);
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0; right: 0;
+  height: 1.5px;
+  background: var(--c-cyan);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--t-base);
+}
+
+.link:hover,
+.link.active {
+  color: var(--c-cyan);
+}
+
+.link.active::after,
+.link:hover::after {
+  transform: scaleX(1);
+}
+
+/* CTA */
+.cta {
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.6rem 1.5rem;
+  border-radius: var(--r-md);
+  background: linear-gradient(135deg, var(--c-indigo), var(--c-violet));
+  color: #fff;
+  letter-spacing: 0.03em;
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.3);
+  transition: transform var(--t-fast), box-shadow var(--t-fast);
+}
+
+.cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.45);
+}
+
+/* Mobile hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--c-text2);
+  border-radius: 2px;
+  transition: all var(--t-base);
+}
+
+@media (max-width: 768px) {
+  .links { display: none; }
+  .hamburger { display: flex; }
+}
