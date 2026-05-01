@@ -214,7 +214,7 @@ function Hero(){
         </div>
 
         <div style={{display:'flex',gap:'1rem',justifyContent:'center',flexWrap:'wrap',animation:'fadeUp .7s ease 1s both'}}>
-          {[{n:'6',l:'Projects'},{n:'1st',l:'Class MSc'},{n:'8+',l:'Certs'},{n:'4',l:'Languages'}].map(({n,l})=>(
+          {[{n:'6',l:'Projects'},{n:'1st',l:'Class MSc'},{n:'5',l:'Certs'},{n:'4',l:'Languages'}].map(({n,l})=>(
             <div key={l} className="card" style={{padding:'.85rem 1.75rem',textAlign:'center'}}>
               <div style={{fontFamily:'var(--fd)',fontSize:'1.7rem',fontWeight:800,background:'linear-gradient(135deg,var(--ind),var(--cyn))',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',lineHeight:1,marginBottom:4}}>{n}</div>
               <div style={{fontSize:'.72rem',fontFamily:'var(--fm)',color:'var(--txt3)',letterSpacing:'.08em',textTransform:'uppercase'}}>{l}</div>
@@ -347,14 +347,14 @@ function Certs(){
   const[hr,hv]=useReveal();
   const BASE='https://raw.githubusercontent.com/Pratik9850/Portfolio/main/Certifications/';
   const certs=[
-    {icon:'☁️',t:'Oracle Cloud GenAI Professional',iss:'Oracle · 2024',f:'Oracle Cloud Infrastructure.pdf'},
-    {icon:'🏃',t:'AI & Agility Professional',iss:'Scrum Alliance · 2024',f:'Ai and Agility Certificate.pdf'},
-    {icon:'🔷',t:'Master Ethereum & Solidity',iss:'Udemy · 2024',f:'master ethereum and solidity.pdf'},
-    {icon:'📊',t:'Data Manipulation with Python',iss:'DataCamp · 2024',f:'data manipulation.pdf'},
+    {icon:'☁️',t:'Oracle Cloud GenAI Professional',iss:'Oracle · 2025',f:'Oracle Cloud Infrastructure.pdf'},
+    {icon:'🏃',t:'AI & Agility Professional',iss:'Scrum Alliance · 2025',f:'Ai and Agility Certificate.pdf'},
+    
+    
     {icon:'🌐',t:'Web Development Bootcamp',iss:'Udemy · 2023',f:'web development.pdf'},
-    {icon:'🐍',t:'Kaggle Python Coder',iss:'Kaggle · 2024',f:'Python Coder (1).png'},
-    {icon:'🤝',t:'AI Ethics & Agile Leadership',iss:'Excellidia · 2024',f:'Pratik.pdf'},
-    {icon:'🎓',t:'Oracle Learning Path Badge',iss:'Oracle · 2024',f:'Learning-Path_badge_default.png'},
+    
+    {icon:'🤝',t:'AI Ethics & Agile Leadership',iss:'Excellidia · 2025',f:'Pratik.pdf'},
+    {icon:'🎓',t:'Oracle Learning Path Badge',iss:'Oracle · 2025',f:'Learning-Path_badge_default.png'},
   ];
   return(
     <section id="certs" className="section" style={{background:'rgba(7,16,31,0.5)'}}>
