@@ -3,7 +3,59 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Pratik Sarode — GenAI Engineer</title>
+<title>Pratik Sarode — GenAI Engineer | AI/ML Engineer | Pune</title>
+<meta name="description" content="Pratik Sarode is a GenAI Engineer based in Pune, India. MSc Applied AI (First Class, Bradford). Specialist in RAG pipelines, LLM evaluation, agentic systems, and LangChain. Open to GenAI, AI/ML, and Prompt Engineer roles."/>
+<meta name="keywords" content="Pratik Sarode, GenAI Engineer, AI Engineer Pune, LLM Engineer, RAG pipeline, LangChain developer, AI portfolio, machine learning engineer India"/>
+<meta name="author" content="Pratik Sarode"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://pratik9850.github.io/Portfolio/"/>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Pratik Sarode — GenAI Engineer"/>
+<meta property="og:description" content="MSc Applied AI (First Class). Building RAG pipelines, agentic systems, DeFi oracles. Open to GenAI Engineer roles in Pune + remote."/>
+<meta property="og:url" content="https://pratik9850.github.io/Portfolio/"/>
+<meta property="og:image" content="https://pratik9850.github.io/Portfolio/og-image.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:site_name" content="Pratik Sarode Portfolio"/>
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Pratik Sarode — GenAI Engineer"/>
+<meta name="twitter:description" content="MSc Applied AI (First Class). Building RAG pipelines, agentic systems, and LLM-powered tools. Open to roles in Pune + remote."/>
+<meta name="twitter:image" content="https://pratik9850.github.io/Portfolio/og-image.png"/>
+
+<!-- Favicon inline SVG -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236366f1'/><text y='.9em' font-size='65' font-family='Arial' font-weight='bold' fill='white' x='12'>PS</text></svg>"/>
+
+<!-- Schema.org Person markup -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Pratik Sarode",
+  "jobTitle": "GenAI Engineer",
+  "description": "MSc Applied AI & Data Analytics graduate specialising in RAG pipelines, LLM evaluation, and agentic systems.",
+  "url": "https://pratik9850.github.io/Portfolio/",
+  "email": "pratik.sarode9850@gmail.com",
+  "address": { "@type": "PostalAddress", "addressLocality": "Pune", "addressCountry": "IN" },
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "University of Bradford" },
+    { "@type": "CollegeOrUniversity", "name": "AISSMS Institute of Information and Technology" }
+  ],
+  "knowsAbout": ["Generative AI", "RAG Pipelines", "LangChain", "LLM Evaluation", "Python", "Machine Learning"],
+  "sameAs": [
+    "https://github.com/Pratik9850",
+    "https://www.linkedin.com/in/pratik-sarode-9a868425a"
+  ]
+}
+</script>
+
+<!-- Preconnect for performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
@@ -21,9 +73,14 @@ html{scroll-behavior:smooth}
   --fd:'Syne',sans-serif;--fb:'DM Sans',sans-serif;--fm:'JetBrains Mono',monospace;
 }
 body{background:var(--bg);color:var(--txt);font-family:var(--fb);overflow-x:hidden;line-height:1.65;-webkit-font-smoothing:antialiased}
+#scroll-bar{position:fixed;top:0;left:0;height:2.5px;background:linear-gradient(90deg,var(--ind),var(--vio),var(--cyn));z-index:9999;width:0%;transition:width .1s linear;box-shadow:0 0 8px var(--ind)}
 ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--ind);border-radius:2px}
 ::selection{background:rgba(99,102,241,0.3)}
 a{color:inherit;text-decoration:none}button{font-family:var(--fb);cursor:pointer;border:none;background:none}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  #canvas,#three-canvas{display:none}
+}
 @keyframes spinSlow{to{transform:rotate(360deg)}}
 @keyframes spinRev{to{transform:rotate(-360deg)}}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
@@ -37,7 +94,7 @@ a{color:inherit;text-decoration:none}button{font-family:var(--fb);cursor:pointer
 .divider{height:1px;background:linear-gradient(90deg,transparent,var(--brd2),transparent);margin:0 5vw}
 .pill{display:inline-flex;align-items:center;padding:.28rem .85rem;border-radius:100px;font-size:.75rem;border:1px solid var(--brd);background:rgba(99,102,241,0.05);color:var(--txt2);font-family:var(--fm);cursor:default;transition:all .2s}
 .pill:hover{border-color:var(--ind);color:var(--ind);background:rgba(99,102,241,0.1)}
-.card{background:var(--bg2);border:1px solid var(--brd);border-radius:20px;transition:border-color .25s,transform .25s,box-shadow .25s}
+.card{background:rgba(12,24,48,0.7);border:1px solid var(--brd);border-radius:20px;transition:border-color .25s,transform .25s,box-shadow .25s;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 .card:hover{border-color:var(--brd2);transform:translateY(-4px);box-shadow:0 16px 40px rgba(99,102,241,0.15)}
 .btn-p{display:inline-flex;align-items:center;gap:.4rem;padding:.8rem 1.75rem;border-radius:12px;background:linear-gradient(135deg,var(--ind),var(--vio));color:#fff;font-weight:600;font-size:.9rem;box-shadow:0 6px 20px rgba(99,102,241,0.35);transition:transform .15s,box-shadow .15s}
 .btn-p:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(99,102,241,0.5)}
@@ -51,6 +108,9 @@ a{color:inherit;text-decoration:none}button{font-family:var(--fb);cursor:pointer
 body:hover #cursor-dot{opacity:1}
 
 /* Chat widget */
+/* Toast */
+#toast{position:fixed;bottom:7rem;right:2rem;z-index:6000;padding:.6rem 1.25rem;background:var(--emr,#10b981);color:#fff;border-radius:10px;font-size:.82rem;font-weight:600;font-family:var(--fb);box-shadow:0 8px 24px rgba(16,185,129,.4);transform:translateY(20px);opacity:0;transition:all .3s;pointer-events:none}
+#toast.show{transform:translateY(0);opacity:1}
 #chat-toggle{position:fixed;bottom:2rem;right:2rem;z-index:5000;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--ind),var(--vio));border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 8px 24px rgba(99,102,241,0.5);transition:transform .2s,box-shadow .2s;animation:chatPulse 3s ease infinite}
 #chat-toggle:hover{transform:scale(1.1);box-shadow:0 12px 32px rgba(99,102,241,0.7)}
 @keyframes chatPulse{0%,100%{box-shadow:0 8px 24px rgba(99,102,241,.5)}50%{box-shadow:0 8px 32px rgba(99,102,241,.8),0 0 0 8px rgba(99,102,241,.1)}}
@@ -80,6 +140,20 @@ body:hover #cursor-dot{opacity:1}
 #chat-send{padding:.6rem 1rem;border-radius:10px;background:linear-gradient(135deg,var(--ind),var(--vio));color:#fff;font-size:.8rem;font-weight:600;font-family:var(--fb);cursor:pointer;border:none;transition:transform .15s,box-shadow .15s}
 #chat-send:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(99,102,241,.4)}
 @media(max-width:480px){#chat-panel{width:calc(100vw - 2rem);right:1rem}}
+/* Hamburger */
+#ham-btn{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;z-index:1001}
+#ham-btn span{display:block;width:22px;height:2px;background:var(--txt2);border-radius:2px;transition:all .3s}
+#ham-btn.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+#ham-btn.open span:nth-child(2){opacity:0}
+#ham-btn.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+#mobile-menu{display:none;position:fixed;inset:0;top:64px;background:rgba(2,9,23,0.97);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;backdrop-filter:blur(20px)}
+#mobile-menu.open{display:flex}
+#mobile-menu span{font-family:var(--fm);font-size:1.2rem;letter-spacing:.15em;text-transform:uppercase;color:var(--txt2);cursor:pointer;transition:color .2s}
+#mobile-menu span:hover{color:var(--cyn)}
+@media(max-width:768px){
+  #ham-btn{display:flex!important}
+  .nav-links{display:none!important}
+}
 @media(max-width:900px){
   .grid-2{grid-template-columns:1fr!important}
   .grid-3{grid-template-columns:repeat(2,1fr)!important}
@@ -97,12 +171,22 @@ body:hover #cursor-dot{opacity:1}
 </head>
 <body>
 <canvas id="canvas"></canvas>
+<div id="scroll-bar"></div>
 <div id="root"></div>
+<div id="mobile-menu">
+  <span onclick="['about','skills','projects','certs','contact'].forEach(id=>document.getElementById(id));document.getElementById('about').scrollIntoView({behavior:'smooth'});document.getElementById('ham-btn').classList.remove('open');document.getElementById('mobile-menu').classList.remove('open')">About</span>
+  <span onclick="document.getElementById('skills').scrollIntoView({behavior:'smooth'});document.getElementById('ham-btn').classList.remove('open');document.getElementById('mobile-menu').classList.remove('open')">Skills</span>
+  <span onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'});document.getElementById('ham-btn').classList.remove('open');document.getElementById('mobile-menu').classList.remove('open')">Projects</span>
+  <span onclick="document.getElementById('certs').scrollIntoView({behavior:'smooth'});document.getElementById('ham-btn').classList.remove('open');document.getElementById('mobile-menu').classList.remove('open')">Certs</span>
+  <span onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});document.getElementById('ham-btn').classList.remove('open');document.getElementById('mobile-menu').classList.remove('open')">Contact</span>
+  <a href="https://raw.githubusercontent.com/Pratik9850/Portfolio/main/Resume/Pratik_Sarode_CV.pdf" target="_blank" class="btn-p" style="font-size:.9rem">Download Resume ↓</a>
+</div>
 <div id="cursor-dot"></div>
 <div id="cursor-ring"></div>
 
 <!-- AI Chat Widget -->
-<div id="chat-toggle" title="Ask about Pratik">💬</div>
+<div id="toast">✓ Email copied!</div>
+<div id="chat-toggle" title="Ask about Pratik" aria-label="Open AI chat about Pratik Sarode" role="button">💬</div>
 <div id="chat-panel">
   <div id="chat-header">
     <div class="av">🤖</div>
@@ -122,13 +206,15 @@ body:hover #cursor-dot{opacity:1}
     <button class="sug" onclick="chatSend(this.textContent)">Tell me about his education</button>
   </div>
   <div id="chat-input-row">
-    <input id="chat-input" placeholder="Ask anything about Pratik…" onkeydown="if(event.key==='Enter')chatSend()"/>
-    <button id="chat-send" onclick="chatSend()">Send</button>
+    <input id="chat-input" placeholder="Ask anything about Pratik…" aria-label="Chat input" onkeydown="if(event.key==='Enter')chatSend()"/>
+    <button id="chat-send" onclick="chatSend()" aria-label="Send message">Send</button>
   </div>
 </div>
 <script>
 // ── Three.js 3D Sphere ──────────────────────────────────────────
 (function(){
+  // Skip Three.js on mobile — saves CPU/battery
+  if(window.innerWidth < 768) return;
   function initThree(){
     if(!window.THREE)return setTimeout(initThree,100);
     const THREE=window.THREE;
@@ -286,6 +372,9 @@ function Nav(){
         ))}
       </div>
       <a href="https://raw.githubusercontent.com/Pratik9850/Portfolio/main/Resume/Pratik_Sarode_CV.pdf" target="_blank" className="btn-p" style={{fontSize:'.82rem',padding:'.6rem 1.5rem'}}>Resume ↓</a>
+      <button id="ham-btn" onClick={()=>{document.getElementById('ham-btn').classList.toggle('open');document.getElementById('mobile-menu').classList.toggle('open');}} aria-label="Menu">
+        <span/><span/><span/>
+      </button>
     </nav>
   );
 }
@@ -339,6 +428,9 @@ function Hero(){
         <h1 style={{fontFamily:'var(--fd)',fontSize:'clamp(3.2rem,8vw,6.5rem)',fontWeight:800,lineHeight:.95,letterSpacing:'-.03em',marginBottom:'.6rem',animation:'fadeUp .7s ease .25s both'}}>
           Pratik <span className="grad">Sarode</span>
         </h1>
+        <p style={{fontSize:'clamp(.95rem,2vw,1.15rem)',color:'var(--txt3)',fontWeight:300,fontStyle:'italic',marginBottom:'1.5rem',animation:'fadeUp .7s ease .38s both',letterSpacing:'.01em'}}>
+          I turn research-level AI into systems that actually ship.
+        </p>
 
 
 
@@ -544,14 +636,15 @@ function Contact(){
           <p style={{color:'var(--txt2)',marginBottom:'2rem',lineHeight:1.8,fontWeight:300}}></p>
           <div style={{display:'flex',flexDirection:'column',gap:'.85rem'}}>
             {[
-              {icon:'✉️',t:'Email',s:'pratik.sarode9850@gmail.com',h:'mailto:pratik.sarode9850@gmail.com'},
+              {icon:'✉️',t:'Email — click to copy',s:'pratik.sarode9850@gmail.com',h:'mailto:pratik.sarode9850@gmail.com',copy:true},
               {icon:'💼',t:'LinkedIn',s:'Connect with me',h:'https://www.linkedin.com/in/pratik-sarode-9a868425a'},
               {icon:'🐙',t:'GitHub',s:'github.com/Pratik9850',h:'https://github.com/Pratik9850'},
               {icon:'📄',t:'Resume',s:'Download PDF',h:'https://raw.githubusercontent.com/Pratik9850/Portfolio/main/Resume/Pratik_Sarode_CV.pdf'},
             ].map(({icon,t,s,h})=>(
               <a key={t} href={h} target="_blank" style={{display:'flex',alignItems:'center',gap:'1rem',padding:'1rem 1.25rem',borderRadius:12,background:'var(--bg2)',border:'1px solid var(--brd)',textDecoration:'none',color:'var(--txt)',transition:'all .25s'}}
                 onMouseEnter={e=>{e.currentTarget.style.borderColor='var(--ind)';e.currentTarget.style.transform='translateX(6px)';}}
-                onMouseLeave={e=>{e.currentTarget.style.borderColor='var(--brd)';e.currentTarget.style.transform='none';}}>
+                onMouseLeave={e=>{e.currentTarget.style.borderColor='var(--brd)';e.currentTarget.style.transform='none';}}
+                onClick={icon==='✉️'?e=>{e.preventDefault();navigator.clipboard.writeText('pratik.sarode9850@gmail.com').then(()=>{const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);});}:undefined}>
                 <div style={{width:40,height:40,borderRadius:10,background:'rgba(99,102,241,0.08)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'1.1rem',flexShrink:0}}>{icon}</div>
                 <div><div style={{fontSize:'.9rem',fontWeight:500}}>{t}</div><div style={{fontSize:'.76rem',color:'var(--txt2)',fontFamily:'var(--fm)'}}>{s}</div></div>
               </a>
@@ -608,6 +701,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
 <script>
 // Custom cursor
 (function(){
+  // Disable custom cursor on touch/mobile devices
+  if('ontouchstart' in window || window.innerWidth < 768){
+    document.getElementById('cursor-dot').style.display='none';
+    document.getElementById('cursor-ring').style.display='none';
+    return;
+  }
   const dot=document.getElementById('cursor-dot');
   const ring=document.getElementById('cursor-ring');
   let mx=0,my=0,rx=0,ry=0;
@@ -622,6 +721,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
   document.body.style.cursor='none';
   document.querySelectorAll('a,button,input,textarea').forEach(el=>el.style.cursor='none');
 })();
+
+// Scroll progress bar
+window.addEventListener('scroll',()=>{
+  const el=document.getElementById('scroll-bar');
+  if(!el)return;
+  const pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
+  el.style.width=pct+'%';
+},{passive:true});
 
 // Chat toggle
 document.getElementById('chat-toggle').addEventListener('click',function(){
