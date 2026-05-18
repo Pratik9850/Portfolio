@@ -61,7 +61,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<canvas id="three-canvas" style="position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.55"></canvas>
+<canvas id="three-canvas" style="position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.65"></canvas>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -73,6 +73,64 @@ html{scroll-behavior:smooth}
   --fd:'Syne',sans-serif;--fb:'DM Sans',sans-serif;--fm:'JetBrains Mono',monospace;
 }
 body{background:var(--bg);color:var(--txt);font-family:var(--fb);overflow-x:hidden;line-height:1.65;-webkit-font-smoothing:antialiased}
+/* ═══ 3D SECTION TRANSITIONS ══════════════════════════════ */
+#page-transition{
+  position:fixed;inset:0;z-index:8000;pointer-events:none;
+  perspective:1200px;
+}
+#transition-panel{
+  position:absolute;inset:0;
+  background:var(--bg);
+  transform-origin:center center;
+  transform:rotateX(90deg) translateZ(-60px);
+  opacity:0;
+  transition:none;
+  backface-visibility:hidden;
+}
+#transition-panel.entering{
+  animation:panel3dIn .55s cubic-bezier(.4,0,.2,1) forwards;
+}
+#transition-panel.leaving{
+  animation:panel3dOut .45s cubic-bezier(.4,0,.2,1) forwards;
+}
+@keyframes panel3dIn{
+  0%  {transform:rotateX(90deg) translateZ(-60px);opacity:0}
+  40% {transform:rotateX(8deg)  translateZ(0px);opacity:.9}
+  100%{transform:rotateX(0deg)  translateZ(0px);opacity:0}
+}
+@keyframes panel3dOut{
+  0%  {transform:rotateX(0deg)   translateZ(0px);opacity:0}
+  50% {transform:rotateX(-12deg) translateZ(-30px);opacity:.85}
+  100%{transform:rotateX(-90deg) translateZ(-60px);opacity:0}
+}
+/* Section reveal animation triggered by JS */
+.section-3d-reveal{
+  animation:section3dReveal .65s cubic-bezier(.34,1.2,.64,1) both;
+}
+@keyframes section3dReveal{
+  0%  {opacity:0;transform:perspective(1000px) rotateX(12deg) translateY(40px) scale(.97)}
+  100%{opacity:1;transform:perspective(1000px) rotateX(0deg)  translateY(0px)   scale(1)}
+}
+/* Nav active glow */
+.nav-3d-active{
+  color:var(--cyn)!important;
+  text-shadow:0 0 12px rgba(6,182,212,.8),0 0 24px rgba(6,182,212,.4);
+}
+/* Section entry light sweep */
+.section-sweep::before{
+  content:'';
+  position:absolute;
+  top:0;left:-100%;
+  width:60%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(125,211,252,.04),transparent);
+  animation:lightSweep .8s ease forwards;
+  pointer-events:none;
+  z-index:0;
+}
+@keyframes lightSweep{
+  from{left:-60%}to{left:120%}
+}
+
 #scroll-bar{position:fixed;top:0;left:0;height:2.5px;background:linear-gradient(90deg,var(--ind),var(--vio),var(--cyn));z-index:9999;width:0%;transition:width .1s linear;box-shadow:0 0 8px var(--ind)}
 ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--ind);border-radius:2px}
 ::selection{background:rgba(99,102,241,0.3)}
@@ -172,13 +230,14 @@ body:hover #cursor-dot{opacity:1}
 <body>
 <canvas id="canvas"></canvas>
 <div id="scroll-bar"></div>
+<div id="page-transition"><div id="transition-panel"></div></div>
 <div id="root"></div>
 <div id="mobile-menu">
-  <span onclick="['about','skills','projects','certs','contact'].forEach(id=>document.getElementById(id));document.getElementById('about').scrollIntoView({behavior:'smooth'});document.getElementById('ham-btn').classList.remove('open');document.getElementById('mobile-menu').classList.remove('open')">About</span>
-  <span onclick="document.getElementById('skills').scrollIntoView({behavior:'smooth'});document.getElementById('ham-btn').classList.remove('open');document.getElementById('mobile-menu').classList.remove('open')">Skills</span>
-  <span onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'});document.getElementById('ham-btn').classList.remove('open');document.getElementById('mobile-menu').classList.remove('open')">Projects</span>
-  <span onclick="document.getElementById('certs').scrollIntoView({behavior:'smooth'});document.getElementById('ham-btn').classList.remove('open');document.getElementById('mobile-menu').classList.remove('open')">Certs</span>
-  <span onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});document.getElementById('ham-btn').classList.remove('open');document.getElementById('mobile-menu').classList.remove('open')">Contact</span>
+  <span onclick="goSection('about')">About</span>
+  <span onclick="goSection('skills')">Skills</span>
+  <span onclick="goSection('projects')">Projects</span>
+  <span onclick="goSection('certs')">Certs</span>
+  <span onclick="goSection('contact')">Contact</span>
   <a href="https://raw.githubusercontent.com/Pratik9850/Portfolio/main/Resume/Pratik_Sarode_CV.pdf" target="_blank" class="btn-p" style="font-size:.9rem">Download Resume ↓</a>
 </div>
 <div id="cursor-dot"></div>
@@ -234,18 +293,18 @@ body:hover #cursor-dot{opacity:1}
     for(let i=0;i<N;i++){
       const phi=Math.acos(-1+2*i/N);
       const theta=Math.sqrt(N*Math.PI)*phi;
-      pos[i*3]=2.2*Math.sin(phi)*Math.cos(theta);
-      pos[i*3+1]=2.2*Math.sin(phi)*Math.sin(theta);
-      pos[i*3+2]=2.2*Math.cos(phi);
+      pos[i*3]=2.4*Math.sin(phi)*Math.cos(theta);
+      pos[i*3+1]=2.4*Math.sin(phi)*Math.sin(theta);
+      pos[i*3+2]=2.4*Math.cos(phi);
     }
     geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
-    const mat=new THREE.PointsMaterial({size:.028,color:0x6366f1,transparent:true,opacity:.75,sizeAttenuation:true});
+    const mat=new THREE.PointsMaterial({size:.022,color:0x7dd3fc,transparent:true,opacity:.55,sizeAttenuation:true});
     const sphere=new THREE.Points(geo,mat);
     scene.add(sphere);
 
     // Inner glow sphere
-    const igeo=new THREE.SphereGeometry(1.8,32,32);
-    const imat=new THREE.MeshBasicMaterial({color:0x6366f1,transparent:true,opacity:.03,wireframe:false});
+    const igeo=new THREE.SphereGeometry(2.0,32,32);
+    const imat=new THREE.MeshBasicMaterial({color:0x38bdf8,transparent:true,opacity:.02,wireframe:false});
     scene.add(new THREE.Mesh(igeo,imat));
 
     // Connecting lines (latitude rings)
@@ -258,7 +317,7 @@ body:hover #cursor-dot{opacity:1}
         pts.push(new THREE.Vector3(r*Math.cos(a),y,r*Math.sin(a)));
       }
       const lg=new THREE.BufferGeometry().setFromPoints(pts);
-      const lm=new THREE.LineBasicMaterial({color:0x6366f1,transparent:true,opacity:.08});
+      const lm=new THREE.LineBasicMaterial({color:0x7dd3fc,transparent:true,opacity:.06});
       scene.add(new THREE.Line(lg,lm));
     }
 
@@ -278,12 +337,12 @@ body:hover #cursor-dot{opacity:1}
     let t=0;
     function animate(){
       requestAnimationFrame(animate);
-      t+=.004;
-      targetX+=(mouse.x*.3-targetX)*.05;
-      targetY+=(mouse.y*.3-targetY)*.05;
+      t+=.0008;
+      targetX+=(mouse.x*.15-targetX)*.02;
+      targetY+=(mouse.y*.15-targetY)*.02;
       sphere.rotation.y=t+targetX;
-      sphere.rotation.x=targetY*.4;
-      sphere.rotation.z=t*.15;
+      sphere.rotation.x=targetY*.2;
+      sphere.rotation.z=t*.04;
       renderer.render(scene,camera);
     }
     animate();
@@ -360,7 +419,28 @@ function Nav(){
     };
     window.addEventListener('scroll',h,{passive:true});return()=>window.removeEventListener('scroll',h);
   },[]);
-  const go=id=>document.getElementById(id)?.scrollIntoView({behavior:'smooth'});
+  const go=id=>{
+    const target=document.getElementById(id);
+    if(!target)return;
+    // Close mobile menu
+    document.getElementById('ham-btn')?.classList.remove('open');
+    document.getElementById('mobile-menu')?.classList.remove('open');
+    // 3D out animation
+    const panel=document.getElementById('transition-panel');
+    panel.className='leaving';
+    setTimeout(()=>{
+      // Scroll instantly (hidden behind panel animation)
+      target.scrollIntoView({behavior:'instant'});
+      // 3D in animation — section reveal
+      panel.className='entering';
+      // Add reveal class to section
+      target.classList.add('section-sweep');
+      setTimeout(()=>{
+        panel.className='';
+        target.classList.remove('section-sweep');
+      },700);
+    },280);
+  };
   return(
     <nav style={{position:'fixed',top:0,left:0,right:0,zIndex:1000,display:'flex',alignItems:'center',justifyContent:'space-between',padding:'1rem 5vw',background:scrolled?'rgba(2,9,23,0.95)':'rgba(2,9,23,0.75)',backdropFilter:'blur(20px)',borderBottom:'1px solid var(--brd)',transition:'background .3s'}}>
       <span onClick={()=>go('about')} style={{fontFamily:'var(--fd)',fontWeight:800,fontSize:'1.4rem',letterSpacing:'-.04em',cursor:'pointer',background:'linear-gradient(135deg,var(--ind),var(--cyn))',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent'}}>PS/</span>
@@ -723,6 +803,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
 })();
 
 // Scroll progress bar
+// Keyboard nav support
+document.addEventListener('keydown',e=>{
+  const sections=['about','skills','projects','certs','contact'];
+  const cur=sections.findIndex(id=>{const el=document.getElementById(id);return el&&window.scrollY>=el.offsetTop-160;});
+  if(e.key==='ArrowDown'&&cur<sections.length-1)go(sections[cur+1]);
+  if(e.key==='ArrowUp'&&cur>0)go(sections[cur-1]);
+});
+
 window.addEventListener('scroll',()=>{
   const el=document.getElementById('scroll-bar');
   if(!el)return;
@@ -731,6 +819,22 @@ window.addEventListener('scroll',()=>{
 },{passive:true});
 
 // Chat toggle
+// Expose go function globally for mobile menu
+window.goSection=function(id){
+  const target=document.getElementById(id);
+  if(!target)return;
+  document.getElementById('ham-btn')?.classList.remove('open');
+  document.getElementById('mobile-menu')?.classList.remove('open');
+  const panel=document.getElementById('transition-panel');
+  panel.className='leaving';
+  setTimeout(()=>{
+    target.scrollIntoView({behavior:'instant'});
+    panel.className='entering';
+    target.classList.add('section-sweep');
+    setTimeout(()=>{panel.className='';target.classList.remove('section-sweep');},700);
+  },280);
+};
+
 document.getElementById('chat-toggle').addEventListener('click',function(){
   const p=document.getElementById('chat-panel');
   p.classList.toggle('open');
