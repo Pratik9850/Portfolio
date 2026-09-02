@@ -292,7 +292,7 @@ footer{border-top:1px solid var(--rule);padding:2rem 5vw;display:flex;justify-co
   <div class="hero-left">
     <div class="hero-status"><span class="pulse"></span>Open to opportunities &nbsp;·&nbsp; Pune, India</div>
     <h1 class="hero-name">Pratik<br><em>Sarode.</em></h1>
-    <p class="hero-role">AI Engineer with 2+ years of experience building low-latency, multi-agent systems and advanced RAG pipelines. Backed by an MSc in Applied AI, I leverage frameworks like LangChain, LangGraph, and CrewAI to design production-ready, cloud-based LLM applications — with a strong track record of optimising system performance and engineering robust hallucination guardrails.</p>
+    <p class="hero-role">AI Engineer with 2+ years of experience building low-latency, multi-agent systems and advanced RAG pipelines. Backed by an MSc in Applied AI, I leverage frameworks like LangChain, LangGraph, and CrewAI to design production-ready, cloud-based LLM applications. Adept at driving complex automation projects from end to end, with a strong track record of optimising system performance and engineering robust hallucination guardrails.</p>
     <p class="hero-tagline">MSc Applied AI (First Class · Bradford) &nbsp;·&nbsp; BE Electronics & Telecom (Distinction · AISSMS)</p>
     <div class="hero-ctas">
       <a href="#contact" class="btn btn-primary">Get in touch →</a>
@@ -508,11 +508,11 @@ footer{border-top:1px solid var(--rule);padding:2rem 5vw;display:flex;justify-co
   <h2 class="contact-hero reveal">Let's build<br>something <em>real.</em></h2>
 
   <div class="contact-grid reveal">
-    <div class="contact-item" id="email-item" title="Click to copy">
+    <a class="contact-item" id="email-item" href="https://mail.google.com/mail/?view=cm&fs=1&to=pratik.sarode9850@gmail.com" target="_blank" rel="noreferrer">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
       <div class="contact-lbl">Email</div>
       <div class="contact-val" id="email-val">pratik.sarode9850@gmail.com</div>
-    </div>
+    </a>
     <a class="contact-item" href="https://www.linkedin.com/in/pratik-sarode-9a868425a" target="_blank" rel="noreferrer">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
       <div class="contact-lbl">LinkedIn</div>
@@ -618,61 +618,53 @@ window.addEventListener('scroll',function(){
 },{passive:true});
 
 // ── Copy email ───────────────────────────────
-document.getElementById('email-item').addEventListener('click',function(){
-  navigator.clipboard.writeText('pratik.sarode9850@gmail.com').then(function(){
-    var el=document.getElementById('email-val');
-    var orig=el.textContent;
-    el.textContent='Copied!';
-    var t=document.getElementById('toast');
-    t.classList.add('show');
-    setTimeout(function(){t.classList.remove('show');el.textContent=orig;},2000);
-  });
-});
+// Email tile now navigates directly to Gmail compose (see href above)
 
 // ── Chat ─────────────────────────────────────
 document.getElementById('chat-btn').addEventListener('click',function(){
   document.getElementById('chat-panel').classList.toggle('open');
 });
 
-var SYS=`You are an AI assistant embedded in Pratik Sarode's portfolio. Answer questions about him concisely and warmly.
+// Local knowledge base — no external API calls (static sites can't safely
+// call the Anthropic API client-side: no CORS allowance, and embedding a
+// real API key in public JS would expose it). This runs entirely in-browser.
+var KB=[
+  {kw:['experience','work','job','role','current','currently','gamaka','doing now'],
+   a:"Pratik is currently an AI Engineer at Gamaka Intellectual Machines (Oct 2024–Present). He's a core engineer on a Multi-Agent Autonomous Medical Insurance Claim Validation Engine — architecting RAG pipelines with LangChain and Langflow, and orchestrating multi-agent workflows with CrewAI using the Model Context Protocol (MCP)."},
+  {kw:['medical','claim','insurance','icd','healthcare','clinical'],
+   a:"His Medical Insurance Claim Validation Engine uses 6 parallel LangGraph agents, a hybrid RAG pipeline (BM25 + semantic + Reciprocal Rank Fusion) for ICD-10 coding, and a verbatim quote-verification gate that blocks unsupported claims — with automatic ABSTAIN routing for ambiguous cases. Deployed on GCP Cloud Run and GKE."},
+  {kw:['fraud','aml','risk','triage','sar','compliance','bfsi','suspicious'],
+   a:"His Fraud & AML Risk Triage system pre-screens alerts using deterministic rules, anomaly scoring, and graph analysis, then drafts Suspicious Activity Reports with citations verified by a dual-agent adversarial validation loop — capped at 2 LLM calls per case, with a full audit trail aligned to BFSI standards."},
+  {kw:['project','built','build','portfolio','made'],
+   a:"Five flagship projects: a Medical Insurance Claim Validation Engine, a Fraud & AML Risk Triage system, a DeFi Oracle ElizaOS Agent, an AI Fake News Detection system (98% accuracy), and a Chat-with-PDF RAG system (sub-500ms latency). Ask me about any of them specifically."},
+  {kw:['skill','tech stack','stack','tools','framework','language','know'],
+   a:"Core stack: LangChain, LangGraph, LlamaIndex, AutoGen, CrewAI, HuggingFace Transformers, TensorFlow, PyTorch, FAISS, and MCP for agent orchestration. Languages: Python, JavaScript, TypeScript. Tools: Claude Code, Cursor, n8n, Langflow, GCP, PostgreSQL."},
+  {kw:['available','open to','hire','hiring','opportunit','looking for','job seek'],
+   a:"Yes — Pratik is open to new opportunities. He's based in Pune, India, and holds a UK Graduate Route Visa with full right to work until January 2028, so he's open to roles in Pune, remote, or the UK."},
+  {kw:['education','degree','msc','university','study','bradford','college','be ','bachelor'],
+   a:"MSc Applied Artificial Intelligence and Data Analytics, First Class, University of Bradford, UK (Sept 2024–Sept 2025). BE Electronics & Telecommunications, Distinction, GPA 7.76, AISSMS Institute of Information and Technology."},
+  {kw:['certification','cert','certified'],
+   a:"Oracle Cloud Infrastructure GenAI Professional, Kaggle Python Coder, AI & Agility (Scrum Alliance), and AI Ethics & Agile Leadership from Excellidia — where he ranked top among 50+ participants."},
+  {kw:['contact','email','reach','linkedin','github','connect','hire him'],
+   a:"Best way to reach him is via the Contact section below — email, LinkedIn, or GitHub links are all there."},
+  {kw:['resume','cv','download'],
+   a:"You can download his résumé from the button in the nav bar or the Contact section — it's the same one linked as 'Résumé'."}
+];
+function matchKB(q){
+  var ql=q.toLowerCase();
+  var best=null,bestScore=0;
+  KB.forEach(function(entry){
+    var score=entry.kw.reduce(function(s,k){return s+(ql.indexOf(k)!==-1?1:0);},0);
+    if(score>bestScore){bestScore=score;best=entry;}
+  });
+  return bestScore>0?best.a:"I don't have a specific answer for that — feel free to email Pratik directly at pratik.sarode9850@gmail.com, or check the Experience, Work, and Stack sections above.";
+}
 
-ABOUT PRATIK:
-Name: Pratik Sarode | Location: Pune, India | Email: pratik.sarode9850@gmail.com
-LinkedIn: https://www.linkedin.com/in/pratik-sarode-9a868425a | GitHub: github.com/Pratik9850
-
-SUMMARY: AI Engineer with 2+ years of experience building low-latency, multi-agent systems and advanced RAG pipelines. MSc in Applied AI. Leverages LangChain, LangGraph, and CrewAI to design production-ready, cloud-based LLM applications, with a strong track record of optimising system performance and engineering robust hallucination guardrails.
-
-EDUCATION:
-- MSc Applied Artificial Intelligence and Data Analytics, First Class — University of Bradford, UK (Sept 2024 – Sept 2025)
-- BE Electronics & Telecommunications, Distinction, GPA 7.76 — AISSMS Institute of Information and Technology (Jan 2021 – June 2024)
-
-EXPERIENCE:
-- AI Engineer | Gamaka Intellectual Machines, London (Oct 2024 – Present)
-  Core engineer for a Multi-Agent Autonomous Medical Insurance Claim Validation Engine. Architected RAG pipelines with LangChain and Langflow. Orchestrated multi-agent workflows using CrewAI, implementing the Model Context Protocol (MCP) for state/context management. Integrated the OpenAI API for conversational AI interfaces in financial domain use cases.
-
-PROJECTS:
-1. DeFi Oracle ElizaOS Agent — 6 agent actions, sub-200ms, 100+ crypto pairs, Docker, Nosana challenge
-2. AI Fake News Detection — 98% accuracy, 50k+ images, TensorFlow, BERT, MSc dissertation
-3. Chat with PDF RAG — sub-500ms, 1000+ docs, LangChain, FAISS, GCP
-4. Autonomous Medical Insurance Claim Validation Engine — LangGraph multi-agent clinical validation, six parallel agents, hybrid RAG (BM25 + semantic + RRF) for ICD-10 coding, verbatim quote-verification hallucination gate, ABSTAIN routing, GCP Cloud Run/GKE deployment
-5. Agentic AI System for Fraud & AML Risk Triage — LangGraph multi-agent risk triage, RAG-grounded SAR drafting with citations, dual-agent adversarial validation, BFSI-aligned audit trail
-
-SKILLS: LangChain, LangGraph, LlamaIndex, AutoGen, CrewAI, HuggingFace, TensorFlow, PyTorch, Pandas, Streamlit, FAISS, MCP, Python, TypeScript, SQL, Claude Code, Cursor, n8n, Langflow, Docker, GCP, PostgreSQL
-
-CERTIFICATIONS: Oracle Cloud Infrastructure GenAI Professional, Kaggle Python Coder, AI & Agility Professional (Scrum Alliance), AI Ethics & Agile Leadership (Excellidia — top rank)
-
-ACHIEVEMENTS: Open-source ElizaOS contributor, Student Representative at Bradford, top rank Excellidia (50+ participants)
-
-UK WORK: Graduate Route Visa — full right to work until January 2028. Open to Pune + remote + UK roles.
-
-Keep answers to 2–4 sentences. Be warm and professional. If unrelated to Pratik, redirect politely.`;
-
-var hist=[];var msgCount=0;var MAX=12;
-async function chatSend(text){
+var msgCount=0;var MAX=20;
+function chatSend(text){
   var input=document.getElementById('chat-input');
   var q=(text||input.value).trim();
   if(!q)return;
-  if(msgCount>=MAX){addMsg('bot','Session limit reached. Please email Pratik directly at pratik.sarode9850@gmail.com 😊');return;}
   input.value='';
   addMsg('user',q);
   document.querySelector('.chat-chips').style.display='none';
@@ -680,21 +672,11 @@ async function chatSend(text){
   var typing=document.createElement('div');typing.className='chat-typing';
   typing.innerHTML='<span></span><span></span><span></span>';
   msgs.appendChild(typing);msgs.scrollTop=msgs.scrollHeight;
-  hist.push({role:'user',content:q});msgCount++;
-  try{
-    var res=await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:300,system:SYS,messages:hist})
-    });
-    var d=await res.json();
-    var reply=(d.content&&d.content[0]&&d.content[0].text)||"Sorry, I couldn't process that. Please email Pratik directly.";
-    typing.remove();addMsg('bot',reply);
-    hist.push({role:'assistant',content:reply});
-  }catch(e){
+  msgCount++;
+  setTimeout(function(){
     typing.remove();
-    addMsg('bot','Having trouble connecting. Email Pratik at pratik.sarode9850@gmail.com');
-  }
+    addMsg('bot',matchKB(q));
+  },450+Math.random()*350);
 }
 function addMsg(role,text){
   var msgs=document.getElementById('chat-msgs');
