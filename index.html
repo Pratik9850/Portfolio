@@ -84,7 +84,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:cen
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,.5)}50%{box-shadow:0 0 0 5px rgba(74,222,128,0)}}
 .hero-name{font-family:var(--f-serif);font-size:clamp(3.8rem,9vw,7.5rem);line-height:.97;letter-spacing:-.02em;margin-bottom:1.6rem}
 .hero-name em{font-style:italic;color:var(--accent)}
-.hero-role{font-size:clamp(1.05rem,2vw,1.3rem);font-weight:300;color:var(--ink-2);max-width:520px;margin-bottom:1rem}
+.hero-role{font-size:clamp(1rem,1.8vw,1.18rem);font-weight:300;color:var(--ink-2);max-width:580px;margin-bottom:1rem}
 .hero-tagline{font-family:var(--f-mono);font-size:.82rem;color:var(--ink-3);margin-bottom:2.5rem;letter-spacing:.02em}
 .hero-ctas{display:flex;gap:.85rem;flex-wrap:wrap;margin-bottom:3.5rem}
 .btn{font-family:var(--f-mono);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;padding:.8rem 1.7rem;border:1px solid;display:inline-flex;align-items:center;gap:.5rem;transition:all .22s;cursor:pointer;background:none}
@@ -292,7 +292,7 @@ footer{border-top:1px solid var(--rule);padding:2rem 5vw;display:flex;justify-co
   <div class="hero-left">
     <div class="hero-status"><span class="pulse"></span>Open to opportunities &nbsp;·&nbsp; Pune, India</div>
     <h1 class="hero-name">Pratik<br><em>Sarode.</em></h1>
-    <p class="hero-role">GenAI Engineer — specialising in RAG architectures, agentic AI workflows, and cloud-based LLM applications.</p>
+    <p class="hero-role">AI Engineer with 2+ years of experience building low-latency, multi-agent systems and advanced RAG pipelines. Backed by an MSc in Applied AI, I leverage frameworks like LangChain, LangGraph, and CrewAI to design production-ready, cloud-based LLM applications — with a strong track record of optimising system performance and engineering robust hallucination guardrails.</p>
     <p class="hero-tagline">MSc Applied AI (First Class · Bradford) &nbsp;·&nbsp; BE Electronics & Telecom (Distinction · AISSMS)</p>
     <div class="hero-ctas">
       <a href="#contact" class="btn btn-primary">Get in touch →</a>
@@ -300,7 +300,7 @@ footer{border-top:1px solid var(--rule);padding:2rem 5vw;display:flex;justify-co
       <a href="https://www.linkedin.com/in/pratik-sarode-9a868425a" target="_blank" rel="noreferrer" class="btn btn-ghost">LinkedIn</a>
     </div>
     <div class="hero-stats">
-      <div><div class="hero-stat-n">6+</div><div class="hero-stat-l">Projects</div></div>
+      <div><div class="hero-stat-n">5+</div><div class="hero-stat-l">Projects</div></div>
       <div><div class="hero-stat-n">1st</div><div class="hero-stat-l">Class MSc</div></div>
       <div><div class="hero-stat-n">4</div><div class="hero-stat-l">Certifications</div></div>
       <div><div class="hero-stat-n">Jan '28</div><div class="hero-stat-l">UK Work Right</div></div>
@@ -328,15 +328,17 @@ footer{border-top:1px solid var(--rule);padding:2rem 5vw;display:flex;justify-co
   <div class="exp-row reveal">
     <div>
       <div class="exp-company">Gamaka Intellectual Machines</div>
-      <div class="exp-role">AI Engineer — Intern</div>
+      <div class="exp-role">AI Engineer</div>
       <ul class="exp-bullets">
-        <li>Developed and deployed AI-powered applications using LLMs, RAG pipelines, AI agents, and modern AI frameworks at production scale.</li>
-        <li>Built intelligent automation workflows with LangChain, CrewAI, LangGraph, FastAPI, Streamlit, and vector databases.</li>
-        <li>Integrated, tested, and optimised GenAI solutions via prompt engineering, LLM APIs, multi-agent systems, and AI orchestration tools.</li>
+        <li>Spearheaded the development of real-world Generative AI and Agentic AI applications, functioning as a core engineer for a Multi-Agent Autonomous Medical Insurance Claim Validation Engine.</li>
+        <li>Architected advanced RAG pipelines utilising LangChain and Langflow to optimise data retrieval, improve LLM accuracy, and ground enterprise responses in proprietary data.</li>
+        <li>Orchestrated multi-agent workflows using CrewAI, successfully implementing the Model Context Protocol (MCP) to maintain seamless state and context management across autonomous agents.</li>
+        <li>Engineered sophisticated prompts and integrated the OpenAI API to build robust, conversational AI interfaces tailored for complex financial domain use cases.</li>
+        <li>Bridged healthcare and finance domains by deploying production-ready AI solutions that significantly reduced manual validation time and improved overall conversational accuracy.</li>
       </ul>
     </div>
     <div>
-      <div class="exp-date">Feb 2026 — Aug 2026</div>
+      <div class="exp-date">Oct 2024 — Present</div>
       <div class="exp-loc">London, UK</div>
     </div>
   </div>
@@ -381,28 +383,19 @@ footer{border-top:1px solid var(--rule);padding:2rem 5vw;display:flex;justify-co
   <div class="proj-row reveal">
     <div class="proj-n">04</div>
     <div>
-      <div class="proj-title">Autonomous Crypto Trading Bot</div>
-      <p class="proj-desc">Pionex API integration (HMAC-SHA256 auth), multi-signal engine (RSI, MACD, EMA, volume spike, gap detection), Groq LLaMA AI validation layer. SQLite logging, Telegram real-time alerts, Flask dashboard. Paper-to-live promotion system: auto-promotes after 48hrs if win rate >55% and profit factor >1.2.</p>
+      <div class="proj-title">Autonomous Medical Insurance Claim Validation Engine</div>
+      <p class="proj-desc">Production multi-agent clinical validation engine orchestrating six domain-specific validation agents in parallel via LangGraph, with typed Pydantic v2 outputs, checkpointing, and human-in-the-loop medical review. Hybrid RAG for ICD-10 coding combines BM25 sparse retrieval, semantic embeddings, and Reciprocal Rank Fusion across FAISS/pgvector. A mandatory verbatim quote-verification gate blocks unsupported claims from reaching output, with automated ABSTAIN routing for ambiguous or high-risk cases. Deployed on GCP Cloud Run and GKE with a Langfuse-backed evaluation layer for reproducible, audit-ready testing.</p>
     </div>
-    <div class="proj-stack">Python<br>Groq LLaMA<br>Pionex API<br>SQLite<br>Telegram</div>
+    <div class="proj-stack">LangGraph<br>FastAPI<br>PostgreSQL<br>Pydantic v2<br>GCP Cloud Run/GKE</div>
   </div>
 
   <div class="proj-row reveal">
     <div class="proj-n">05</div>
     <div>
-      <div class="proj-title">Bounty Hunter Agent</div>
-      <p class="proj-desc">LangGraph-powered autonomous agent scraping Superteam Earn, Gitcoin, Layer3, Devfolio, and DoraHacks. Keyword pre-filter plus Groq LLaMA deep-scoring pipeline. Surfaces high-fit opportunities via Telegram with full draft submissions generated end-to-end.</p>
+      <div class="proj-title">Agentic AI System for Fraud & AML Risk Triage</div>
+      <p class="proj-desc">LangGraph-powered multi-agent pipeline pre-screening fraud and AML alerts using deterministic rules, statistical anomaly scoring, and graph-based analysis. Drafts Suspicious Activity Reports with RAG-grounded citations tied directly to source text, verified by a dual-agent adversarial validation loop before reaching human analysts. Tiered escalation architecture caps expensive LLM usage to exactly two calls per case, with full audit-trail provenance aligned to BFSI model-risk documentation standards.</p>
     </div>
-    <div class="proj-stack">LangGraph<br>Groq<br>Python<br>SQLite<br>Telegram</div>
-  </div>
-
-  <div class="proj-row reveal">
-    <div class="proj-n">06</div>
-    <div>
-      <div class="proj-title">Forest Fire Detection System</div>
-      <p class="proj-desc">Real-time wildfire detection using CNN-based classification on aerial imagery. Multi-class severity alert system with OpenCV preprocessing, deployed on GCP with live inference endpoint.</p>
-    </div>
-    <div class="proj-stack">PyTorch<br>OpenCV<br>GCP<br>CNN</div>
+    <div class="proj-stack">LangGraph<br>scikit-learn<br>FAISS<br>Python</div>
   </div>
 </section>
 
@@ -447,11 +440,7 @@ footer{border-top:1px solid var(--rule);padding:2rem 5vw;display:flex;justify-co
     <div class="stack-tags">Claude Code &nbsp;·&nbsp; Cursor &nbsp;·&nbsp; n8n &nbsp;·&nbsp; Langflow &nbsp;·&nbsp; Git &nbsp;·&nbsp; GCP &nbsp;·&nbsp; Power BI &nbsp;·&nbsp; Docker &nbsp;·&nbsp; FastAPI &nbsp;·&nbsp; Flask</div>
   </div>
 
-  <div class="gh-graph reveal">
-    <div class="gh-graph-label">Live GitHub Activity</div>
-    <img src="https://ghchart.rshah.org/22D3EE/Pratik9850" alt="Pratik Sarode GitHub contribution graph">
-  </div>
-</section>
+  </section>
 
 <hr class="section-rule">
 
@@ -651,23 +640,24 @@ ABOUT PRATIK:
 Name: Pratik Sarode | Location: Pune, India | Email: pratik.sarode9850@gmail.com
 LinkedIn: https://www.linkedin.com/in/pratik-sarode-9a868425a | GitHub: github.com/Pratik9850
 
+SUMMARY: AI Engineer with 2+ years of experience building low-latency, multi-agent systems and advanced RAG pipelines. MSc in Applied AI. Leverages LangChain, LangGraph, and CrewAI to design production-ready, cloud-based LLM applications, with a strong track record of optimising system performance and engineering robust hallucination guardrails.
+
 EDUCATION:
 - MSc Applied Artificial Intelligence and Data Analytics, First Class — University of Bradford, UK (Sept 2024 – Sept 2025)
 - BE Electronics & Telecommunications, Distinction, GPA 7.76 — AISSMS Institute of Information and Technology (Jan 2021 – June 2024)
 
 EXPERIENCE:
-- AI Engineer (Intern) | Gamaka Intellectual Machines, London (Feb 2026 – Aug 2026)
-  Deployed LLM applications, RAG pipelines, and AI agents. Built automation workflows with LangChain, CrewAI, LangGraph, FastAPI, Streamlit, and vector databases. Optimised GenAI solutions via prompt engineering and multi-agent systems.
+- AI Engineer | Gamaka Intellectual Machines, London (Oct 2024 – Present)
+  Core engineer for a Multi-Agent Autonomous Medical Insurance Claim Validation Engine. Architected RAG pipelines with LangChain and Langflow. Orchestrated multi-agent workflows using CrewAI, implementing the Model Context Protocol (MCP) for state/context management. Integrated the OpenAI API for conversational AI interfaces in financial domain use cases.
 
 PROJECTS:
 1. DeFi Oracle ElizaOS Agent — 6 agent actions, sub-200ms, 100+ crypto pairs, Docker, Nosana challenge
 2. AI Fake News Detection — 98% accuracy, 50k+ images, TensorFlow, BERT, MSc dissertation
 3. Chat with PDF RAG — sub-500ms, 1000+ docs, LangChain, FAISS, GCP
-4. Autonomous Crypto Trading Bot — RSI/MACD/EMA, Groq AI validation, paper-to-live promotion
-5. Bounty Hunter Agent — LangGraph, multi-platform scraping, Groq LLaMA scoring
-6. Forest Fire Detection — PyTorch, OpenCV, GCP
+4. Autonomous Medical Insurance Claim Validation Engine — LangGraph multi-agent clinical validation, six parallel agents, hybrid RAG (BM25 + semantic + RRF) for ICD-10 coding, verbatim quote-verification hallucination gate, ABSTAIN routing, GCP Cloud Run/GKE deployment
+5. Agentic AI System for Fraud & AML Risk Triage — LangGraph multi-agent risk triage, RAG-grounded SAR drafting with citations, dual-agent adversarial validation, BFSI-aligned audit trail
 
-SKILLS: LangChain, LangGraph, LlamaIndex, AutoGen, CrewAI, HuggingFace, TensorFlow, PyTorch, Pandas, Streamlit, FAISS, Python, TypeScript, SQL, Claude Code, Cursor, n8n, Langflow, Docker, GCP
+SKILLS: LangChain, LangGraph, LlamaIndex, AutoGen, CrewAI, HuggingFace, TensorFlow, PyTorch, Pandas, Streamlit, FAISS, MCP, Python, TypeScript, SQL, Claude Code, Cursor, n8n, Langflow, Docker, GCP, PostgreSQL
 
 CERTIFICATIONS: Oracle Cloud Infrastructure GenAI Professional, Kaggle Python Coder, AI & Agility Professional (Scrum Alliance), AI Ethics & Agile Leadership (Excellidia — top rank)
 
