@@ -393,9 +393,9 @@ footer{border-top:1px solid var(--rule);padding:2rem 5vw;display:flex;justify-co
     <div class="proj-n">05</div>
     <div>
       <div class="proj-title">Agentic AI System for Fraud & AML Risk Triage</div>
-      <p class="proj-desc">Trains and tunes scikit-learn anomaly-detection and graph-based network-analysis models on transaction data, forming a deterministic ML tier that pre-screens every fraud and AML alert before any LLM is involved. A LangGraph-powered triage pipeline routes only the ML-flagged high-risk alerts to LLM review, resolving most alerts through the ML/rules tier alone and capping LLM usage to exactly two calls per escalated case. Drafts Suspicious Activity Reports with RAG-grounded citations tied directly to source text spans, verified by a dual-agent adversarial validation loop and a typed schema with mandatory abstention before any statement reaches a human analyst. Full audit-trail provenance spans both the ML and LLM tiers, aligned to BFSI model-risk documentation standards.</p>
+      <p class="proj-desc">Trains and tunes scikit-learn anomaly-detection and graph-based network-analysis models on transaction data, forming a deterministic ML tier that pre-screens every fraud and AML alert before any LLM is involved. A LangGraph-powered triage pipeline routes only the ML-flagged high-risk alerts to LLM review, resolving most alerts through the ML/rules tier alone and capping LLM usage to exactly two calls per escalated case. Drafts Suspicious Activity Reports with RAG-grounded citations tied directly to source text spans, verified by a dual-agent adversarial validation loop and a typed schema with mandatory abstention before any statement reaches a human analyst. Full audit-trail provenance spans both the ML and LLM tiers, aligned to BFSI model-risk documentation standards. Deployed on GKE as containerised services, with the ML tier and the LangGraph triage pipeline running independently.</p>
     </div>
-    <div class="proj-stack">LangGraph<br>scikit-learn<br>FAISS<br>Python</div>
+    <div class="proj-stack">LangGraph<br>scikit-learn<br>FAISS<br>Python<br>GKE</div>
   </div>
 </section>
 
@@ -421,7 +421,7 @@ footer{border-top:1px solid var(--rule);padding:2rem 5vw;display:flex;justify-co
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><line x1="7.8" y1="7" x2="11" y2="16.3"/><line x1="16.2" y1="7" x2="13" y2="16.3"/><line x1="8" y1="6" x2="16" y2="6"/></svg>
       AI / ML
     </div>
-    <div class="stack-tags">Machine Learning &nbsp;·&nbsp; Deep Learning &nbsp;·&nbsp; NLP &nbsp;·&nbsp; Generative AI &nbsp;·&nbsp; LLMs &nbsp;·&nbsp; RAG &nbsp;·&nbsp; LLM Evaluation &nbsp;·&nbsp; Prompt Engineering &nbsp;·&nbsp; AI Agents &nbsp;·&nbsp; Agentic AI &nbsp;·&nbsp; Multi-Agent Systems &nbsp;·&nbsp; MCP</div>
+    <div class="stack-tags">Machine Learning &nbsp;·&nbsp; Deep Learning &nbsp;·&nbsp; NLP &nbsp;·&nbsp; Generative AI &nbsp;·&nbsp; LLMs &nbsp;·&nbsp; RAG &nbsp;·&nbsp; LLM Evaluation &nbsp;·&nbsp; Hallucination Guardrails &nbsp;·&nbsp; Observability (Langfuse) &nbsp;·&nbsp; State Management &nbsp;·&nbsp; Prompt Engineering &nbsp;·&nbsp; AI Agents &nbsp;·&nbsp; Agentic AI &nbsp;·&nbsp; Multi-Agent Systems &nbsp;·&nbsp; MCP</div>
   </div>
 
   <div class="stack-row reveal">
@@ -450,10 +450,18 @@ footer{border-top:1px solid var(--rule);padding:2rem 5vw;display:flex;justify-co
 
   <div class="stack-row reveal">
     <div class="stack-cat">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4 4 0 010-8 5 5 0 019.6-1.5A4 4 0 0118 18H7z"/></svg>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
       Tools
     </div>
-    <div class="stack-tags">Git &nbsp;·&nbsp; GitHub &nbsp;·&nbsp; Docker &nbsp;·&nbsp; MLflow &nbsp;·&nbsp; Jupyter Notebook &nbsp;·&nbsp; Technical Documentation &nbsp;·&nbsp; Claude Code &nbsp;·&nbsp; Cursor &nbsp;·&nbsp; n8n &nbsp;·&nbsp; Langflow &nbsp;·&nbsp; GCP &nbsp;·&nbsp; Power BI</div>
+    <div class="stack-tags">Git &nbsp;·&nbsp; GitHub &nbsp;·&nbsp; Docker &nbsp;·&nbsp; MLflow &nbsp;·&nbsp; Jupyter Notebook &nbsp;·&nbsp; Technical Documentation &nbsp;·&nbsp; Claude Code &nbsp;·&nbsp; Cursor &nbsp;·&nbsp; n8n &nbsp;·&nbsp; Langflow &nbsp;·&nbsp; Power BI</div>
+  </div>
+
+  <div class="stack-row reveal">
+    <div class="stack-cat">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4 4 0 010-8 5 5 0 019.6-1.5A4 4 0 0118 18H7z"/></svg>
+      Cloud
+    </div>
+    <div class="stack-tags">GCP (Cloud Run, GKE) &nbsp;·&nbsp; Vertex AI</div>
   </div>
 
   </section>
@@ -643,7 +651,7 @@ var KB=[
   {kw:['project','built','build','portfolio','made'],
    a:"Five flagship projects: a Medical Insurance Claim Validation Engine, a Fraud & AML Risk Triage system, a DeFi Oracle ElizaOS Agent, an AI Fake News Detection system (98% accuracy), and a Chat-with-PDF RAG system (sub-500ms latency). Ask me about any of them specifically."},
   {kw:['skill','tech stack','stack','tools','framework','language','know'],
-   a:"Core stack: LangChain, LangGraph, LlamaIndex, AutoGen, CrewAI, HuggingFace Transformers, TensorFlow, PyTorch, scikit-learn, and MCP for agent orchestration. Languages: Python, JavaScript, TypeScript, SQL. Data/Vector search: FAISS, pgvector, Qdrant, PostgreSQL. Tools: Claude Code, Cursor, n8n, Langflow, GCP, Docker."},
+   a:"Core stack: LangChain, LangGraph, LlamaIndex, AutoGen, CrewAI, HuggingFace Transformers, TensorFlow, PyTorch, scikit-learn, and MCP for agent orchestration. Languages: Python, JavaScript, TypeScript, SQL. Data/Vector search: FAISS, pgvector, Qdrant, PostgreSQL. Tools: Claude Code, Cursor, n8n, Langflow, Docker. Cloud: GCP (Cloud Run, GKE), Vertex AI. Evaluation: Langfuse observability, LLM evals, hallucination guardrails."},
   {kw:['available','open to','hire','hiring','opportunit','looking for','job seek'],
    a:"Yes, Pratik is open to new opportunities. He's based in Pune, India, and holds a UK Graduate Route Visa with full right to work until January 2028, so he's open to roles in Pune, remote, or the UK."},
   {kw:['education','degree','msc','university','study','bradford','college','be ','bachelor'],
